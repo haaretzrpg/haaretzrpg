@@ -1,0 +1,64 @@
+---
+layout: default
+---
+
+<div class="row mt-3">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+        {% if page.values or page.goals or page.rank or page.image %}
+        <div class="row mt-3">
+            {% if page.image %}
+            <div class="col-lg-6">
+                <img class="img-fluid img-thumbnail" src="{{ page.image }}"/>
+
+            {% endif %}
+
+            {% if page.goals %}
+                <h5>Missão</h5>
+                <table class="table table-striped">
+                    <tbody>
+                        {% for stat in page.goals %}
+                        <tr>
+                            <td>{{ stat }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+
+            <div class="col-lg-6">
+                {% if page.values %}
+
+                <h5>Valores</h5>
+                    <table class="table table-striped">
+                        {% for skill in page.values %}
+                        <tr>
+                            <td>{{ skill }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+                {% endif %}
+
+                {% if page.rank %}
+
+                <h5>Hierarquia</h5>
+                    <table class="table table-striped">
+                        {% for entry in page.rank %}
+                        <tr>
+                            <td>{{ entry[0] }}</td>
+                            <td>{{ entry[1] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+                {% endif %}
+            </div>
+    {% endif %}
+        </div>
+    </div>
+        <br>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+    {{ content }}
+    </div>
+</div>
